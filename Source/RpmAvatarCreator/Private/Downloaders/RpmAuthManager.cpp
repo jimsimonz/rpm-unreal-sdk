@@ -117,7 +117,7 @@ void FRpmAuthManager::SaveUserData() const
 
 void FRpmAuthManager::LoadUserData()
 {
-	const URpmUserDataSaveGame* SaveGame = Cast<URpmUserDataSaveGame>(UGameplayStatics::LoadGameFromSlot(USER_DATA_SLOT, 0));
+	const URpmUserDataSaveGame* SaveGame = Cast<URpmUserDataSaveGame>(UGameplayStatics::LoadGameFromSlot(USER_DATA_SLOT, 0, false));
 	if (SaveGame)
 	{
 		if (SaveGame->UserData.AppId != RequestFactory->GetAppId() || SaveGame->UserData.Subdomain != RequestFactory->GetSubdomain())
