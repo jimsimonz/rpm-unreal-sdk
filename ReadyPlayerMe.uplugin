@@ -48,28 +48,6 @@
 				"Android",
 				"IOS"
 			]
-		},
-		{
-			"Name": "glTFRuntime",
-			"Type": "Runtime",
-			"LoadingPhase": "Default",
-			"WhitelistPlatforms": [
-				"Win64",
-				"Mac",
-				"Linux",
-				"Android",
-				"IOS"
-			]
-		},
-		{
-			"Name": "glTFRuntimeEditor",
-			"Type": "Editor",
-			"LoadingPhase": "Default",
-			"WhitelistPlatforms": [
-				"Win64",
-				"Mac",
-				"Linux"
-			]
 		}
 	],
 	"Plugins": [
