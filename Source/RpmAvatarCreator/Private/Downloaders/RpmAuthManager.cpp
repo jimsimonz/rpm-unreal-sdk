@@ -117,7 +117,11 @@ void FRpmAuthManager::SaveUserData() const
 
 void FRpmAuthManager::LoadUserData()
 {
+#ifdef ALIVEIN_TECH_FORK
 	const URpmUserDataSaveGame* SaveGame = Cast<URpmUserDataSaveGame>(UGameplayStatics::LoadGameFromSlot(USER_DATA_SLOT, 0, false));
+#else
+	const URpmUserDataSaveGame* SaveGame = Cast<URpmUserDataSaveGame>(UGameplayStatics::LoadGameFromSlot(USER_DATA_SLOT, 0));
+#endif
 	if (SaveGame)
 	{
 		if (SaveGame->UserData.AppId != RequestFactory->GetAppId() || SaveGame->UserData.Subdomain != RequestFactory->GetSubdomain())
