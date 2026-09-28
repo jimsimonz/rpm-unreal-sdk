@@ -94,17 +94,17 @@ FString FPayloadExtractor::GetStringFromGender(EAvatarGender Gender)
 FRpmAvatarProperties FPayloadExtractor::ExtractPayload(const FString& JsonString)
 {
 	const TSharedPtr<FJsonObject> DataObject = FDataJsonUtils::ExtractDataObject(JsonString);
-	if (!DataObject || !DataObject->HasField("assets"))
+	if (!DataObject || !DataObject->HasField(TEXT("assets")))
 	{
 		return {};
 	}
 
 	FRpmAvatarProperties AvatarProperties;
-	AvatarProperties.Id = DataObject->GetStringField("id");
-	AvatarProperties.Partner = DataObject->GetStringField("partner");
-	AvatarProperties.Gender = StringToGender(DataObject->GetStringField("gender"));
-	AvatarProperties.BodyType = StringToBodyType(DataObject->GetStringField("bodyType"));
-	const auto AssetsObject = DataObject->GetObjectField("assets");
+	AvatarProperties.Id = DataObject->GetStringField(TEXT("id"));
+	AvatarProperties.Partner = DataObject->GetStringField(TEXT("partner"));
+	AvatarProperties.Gender = StringToGender(DataObject->GetStringField(TEXT("gender")));
+	AvatarProperties.BodyType = StringToBodyType(DataObject->GetStringField(TEXT("bodyType")));
+	const auto AssetsObject = DataObject->GetObjectField(TEXT("assets"));
 	for (const auto& Item : ASSET_TYPE_TO_STRING_MAP)
 	{
 		if (AssetsObject->HasField(Item.Value))

@@ -48,7 +48,7 @@ FRpmUserData FUserDataExtractor::ExtractRefreshedUserSession(const FString& Json
 FRpmUserData FUserDataExtractor::ExtractUserData(const FString& JsonString)
 {
 	const TSharedPtr<FJsonObject> DataObject = FDataJsonUtils::ExtractDataObject(JsonString);
-	if (!DataObject || !DataObject->HasField("_id") || !DataObject->HasField(JSON_FIELD_TOKEN))
+	if (!DataObject || !DataObject->HasField(TEXT("_id")) || !DataObject->HasField(JSON_FIELD_TOKEN))
 	{
 		return {};
 	}
@@ -56,7 +56,7 @@ FRpmUserData FUserDataExtractor::ExtractUserData(const FString& JsonString)
 	FRpmUserData UserData;
 	UserData.bIsAuthenticated = true;
 	UserData.bIsExistingUser = true;
-	UserData.Id = DataObject->GetStringField("_id");
+	UserData.Id = DataObject->GetStringField(TEXT("_id"));
 	UserData.Name = DataObject->GetStringField(JSON_FIELD_NAME);
 	UserData.Email = DataObject->GetStringField(JSON_FIELD_EMAIL);
 	UserData.Token = DataObject->GetStringField(JSON_FIELD_TOKEN);
