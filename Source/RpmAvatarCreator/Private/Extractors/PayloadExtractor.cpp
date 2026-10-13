@@ -133,14 +133,14 @@ FString FPayloadExtractor::MakeCreatePayload(const FRpmAvatarProperties& AvatarP
 	const TSharedPtr<FJsonObject> DataObject = MakeShared<FJsonObject>();
 	const TSharedPtr<FJsonObject> AssetsObject = MakeShared<FJsonObject>();
 
-	DataObject->SetObjectField("assets", AssetsObject);
+	DataObject->SetObjectField(TEXTVIEW("assets"), AssetsObject);
 
-	DataObject->SetStringField("partner", AvatarProperties.Partner);
-	DataObject->SetStringField("bodyType", BodyTypeToString(AvatarProperties.BodyType));
+	DataObject->SetStringField(TEXTVIEW("partner"), AvatarProperties.Partner);
+	DataObject->SetStringField(TEXTVIEW("bodyType"), BodyTypeToString(AvatarProperties.BodyType));
 	if (!AvatarProperties.Base64Image.IsEmpty())
 	{
-		DataObject->SetStringField("base64Image", AvatarProperties.Base64Image);
-		DataObject->SetStringField("gender",  GenderToString(AvatarProperties.Gender));
+		DataObject->SetStringField(TEXTVIEW("base64Image"), AvatarProperties.Base64Image);
+		DataObject->SetStringField(TEXTVIEW("gender"),  GenderToString(AvatarProperties.Gender));
 	}
 
 	return FDataJsonUtils::MakeDataPayload(DataObject);
@@ -149,7 +149,7 @@ FString FPayloadExtractor::MakeCreatePayload(const FRpmAvatarProperties& AvatarP
 FString FPayloadExtractor::MakeUpdatePayload(const TSharedPtr<FJsonObject> AssetsObject)
 {
 	const TSharedPtr<FJsonObject> DataObject = MakeShared<FJsonObject>();
-	DataObject->SetObjectField("assets", AssetsObject);
+	DataObject->SetObjectField(TEXTVIEW("assets"), AssetsObject);
 
 	return FDataJsonUtils::MakeDataPayload(DataObject);
 }
